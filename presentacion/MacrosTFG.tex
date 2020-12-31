@@ -1,0 +1,96 @@
+
+\def\R{\ensuremath{\mathbb R}}
+\def\K{\ensuremath{\mathbb K}}
+\def\C{\ensuremath{\mathbb C}}
+\def\N{\ensuremath{\mathbb N}}
+\def\Z{\ensuremath{\mathbb Z}}
+\def\Q{\ensuremath{\mathbb Q}}
+\def\A{\ensuremath{\mathbb A}}
+
+\def\centra#1{\begin{center} #1\end{center}}
+
+\def\sen{\mathop{\rm sen}\nolimits}
+\def\arcsen{\mathop{\rm arcsen}\nolimits}
+\def\tg{\mathop{\rm tg}\nolimits}
+\def\cotg{\mathop{\rm cotg}\nolimits}
+\def\cosec{\mathop{\rm cosec}\nolimits}
+\def\arctg{\mathop{\rm arctg}\nolimits}
+
+\def\suma#1#2{\displaystyle\sum_{#1}^{#2}}
+\def\fra#1#2{\displaystyle {#1\over #2}}
+\def\Lim{\ensuremath{\displaystyle\lim}}
+
+\newcommand{\be}{\begin{enumerate}}
+\newcommand{\ee}{\end{enumerate}}
+
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+\newcommand{\bd}{\begin{description}}
+\newcommand{\ed}{\end{description}}
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+
+\newcommand{\braya}{\begin{itemize}\renewcommand{\labelitemi}{\labelitemii}}
+\newcommand{\eraya}{\end{itemize}}
+
+\newcommand{\bletra}{\begin{list}{(\alph{enumiii})}{\usecounter{enumiii}}}
+\newcommand{\eletra}{\end{list}}
+
+\newcommand{\broman}{\begin{list}{(\roman{enumiii})}{\usecounter{enumiii}}}
+\newcommand{\eroman}{\end{list}}
+
+\newcommand{\bRoman}{\begin{list}{(\Roman{enumi})}{\usecounter{enumi}}}
+\newcommand{\eRoman}{\end{list}}
+
+\def\xn{(x_1,x_2,\ldots ,x_n)}
+\def\yn{(y_1,y_2,\ldots ,y_n)}
+\def\xm{(x_1,x_2,\ldots ,x_m)}
+\def\ym{(y_1,y_2,\ldots ,y_m)}
+
+\def\caja{\hspace*{\fill}$\Box$}
+
+\def\nveces#1{\matrix{\mathop{\frown}\limits^{#1}
+\cr \cdots\cr \mbox{}} }
+
+\def\Veces#1{\buildrel {\buildrel #1\over\frown} \over\cdots}
+
+\def\sucesion#1#2{\left(#1_#2\right)_#2}
+
+
+
+%--------------------------- MIS MACROS --------------------------------
+
+\def\escalar#1#2{\left(#1,#2\right)}
+\def\dualD#1#2{{\langle #1, #2 \rangle}_{\mathscr{D'},\mathscr{D}}}
+\def\escalarL#1#2{\escalar{#1}{#2}_{L^2(\Omega)}}
+\def\escalarLd#1#2{\escalar{#1}{#2}_{\left(L^2(\Omega)\right)^d}}
+\def\dualH#1#2{\langle#1,#2\rangle_{(H^1(\Omega))',H^1(\Omega)}}
+
+\def\norma#1{\left\|#1\right\|}
+\def\normaL#1{\norma{#1}_{L^2(\Omega)}}
+\def\normaLd#1{\norma{#1}_{\left(L^2(\Omega)\right)^d}}
+\def\normaLinf#1{\norma{#1}_{L^\infty (\Omega)}}
+\def\seminorma#1{\left|#1\right|}
+\def\salto#1{\left[\!\left[#1\right]\!\right]}
+\def\media#1{\left\{\!\!\left\{#1\right\}\!\!\right\}}
+\def\uex{u_{\text{ex}}}
+
+\def\D{\mathscr{D}}
+\def\T{\mathcal{T}}
+\def\E{\mathcal{E}}
+\def\S{\mathcal{S}}
+
+\def\asip#1#2{a_h^{\text{sip},\sigma}(#1,#2)}
+\def\normasip#1{\norma{#1}_{\text{sip}}}
+\def\seminormasalto#1{\left|#1\right|_{\text{s}}}
+\def\escalarsip#1#2{\escalar{#1}{#2}_\text{sip}}
+
+\def\acf#1#2{a_h^{\text{cf}}(#1,#2)}
+\def\normacf#1{\norma{#1}_{\text{cf}}}
+\def\escalarcf#1#2{\escalar{#1}{#2}_\text{cf}}
+
+\def\aupw#1#2{a_h^{\text{upw}}(#1,#2)}
+\def\normaupw#1{\norma{#1}_{\text{upw}}}
+\def\escalarupw#1#2{\escalar{#1}{#2}_\text{upw}}
