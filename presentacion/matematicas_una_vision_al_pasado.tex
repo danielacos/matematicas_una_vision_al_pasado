@@ -612,6 +612,200 @@ $$\Big{\Updownarrow}$$
 	\end{itemize}
 \end{frame}
 
+\begin{frame}{Soluciones numéricas}
+	\begin{figure}[h!]
+		\begin{subfigure}[b]{0.215\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{img/Difusion/Recortes/steady_diffusion_exact_n_4.png}
+			\caption{Solución exacta.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.215\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{img/Difusion/Recortes/steady_diffusion_approx_n_4.png}
+			\caption{Solución discreta.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.11\textwidth}
+			\centering
+			\includegraphics[scale=0.23]{img/Difusion/Recortes/steady_diffusion_values.png}
+			%\caption*{ }
+		\end{subfigure}
+		\begin{subfigure}[b]{0.215\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{img/Difusion/Recortes/steady_diffusion_exact_n_8.png}
+			\caption{Solución exacta.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.215\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{img/Difusion/Recortes/steady_diffusion_approx_n_8.png}
+			\caption{Solución discreta.}
+		\end{subfigure}
+		\caption{A la izquierda $h\approx\frac{1}{4}$. A la derecha $h\approx\frac{1}{8}$}
+	\end{figure}
+	\begin{figure}[h!]
+		\begin{subfigure}[b]{0.215\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{img/Difusion/Recortes/steady_diffusion_exact_n_16.png}
+			\caption{Solución exacta.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.215\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{img/Difusion/Recortes/steady_diffusion_approx_n_16.png}
+			\caption{Solución discreta.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.11\textwidth}
+			\centering
+			\includegraphics[scale=0.23]{img/Difusion/Recortes/steady_diffusion_values.png}
+			%\caption*{ }
+		\end{subfigure}
+		\begin{subfigure}[b]{0.215\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{img/Difusion/Recortes/steady_diffusion_exact_n_32.png}
+			\caption{Solución exacta.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.215\textwidth}
+			\centering
+			\includegraphics[scale=0.16]{img/Difusion/Recortes/steady_diffusion_approx_n_32.png}
+			\caption{Solución discreta.}
+		\end{subfigure}
+		\caption{A la izquierda $h\approx\frac{1}{16}$. A la derecha $h\approx\frac{1}{32}$}
+	\end{figure}
+\end{frame}
+
+\subsection{Problema hiperbólico}
+
+\begin{frame}{Problema modelo}
+	Consideramos el problema de convección-reacción:
+	\begin{block}{}
+		\begin{equation*}
+		\label{prob_modelo_hiperbolica}
+		\left\{
+		\begin{aligned}
+		\beta\cdot\nabla u+\mu u&=f & \text{en } &\Omega, \\
+		u&=0 & \text{en } &\partial\Omega^-,
+		\end{aligned}
+		\right.
+		\end{equation*}
+	\end{block}
+	donde 
+	\begin{itemize}
+		\item $\partial\Omega^-=\left\{x\in\partial\Omega\colon \beta(x)\mathbf{n}(x)<0\right\},$
+		\item $\mu\in L^\infty(\Omega)$,
+		\item $\beta\in\left[\text{Lip}(\Omega)\right]^d$,
+		\item $f\in L^2(\Omega)$.
+	\end{itemize}
+	\vspace*{.5cm}
+	Asumimos que existe $\mu_0>0$ tal que $\displaystyle\mu-\frac{1}{2}\nabla\cdot\beta\geq\mu_0$ en $\Omega$.
+	
+\end{frame}
+
+\begin{frame}{Formulación variacional continua}
+	\textbf{Espacio de soluciones}: $\alert{V}$ (espacio de los grafos).
+	\begin{itemize}\itemsep1em
+		\item $a\colon V\times V\to \R$, $$\alert{a(u,v)}\coloneqq\int_\Omega(\beta\cdot\nabla u)v+\int_\Omega\mu u v+\int_{\partial\Omega}(\beta\mathbf{n})^-uv;$$
+		\item $L\colon V\to\R$, $$\alert{L(v)}\coloneqq\int_\Omega f v.$$
+	\end{itemize}
+	\textbf{Problema variacional}:
+	\begin{block}{}
+		\begin{center}
+			$\text{encontrar }u\in V\text{ tal que }a(u,v)=L(v)\text{ para todo } v\in V.$
+		\end{center}
+	\end{block}
+	
+	\begin{itemize}\itemsep1em
+		\item El problema modelo y su formulación variacional son \alert{equivalentes} en $V$.
+		
+		\item Existe solución y es única.
+	\end{itemize}
+	
+\end{frame}
+
+\begin{frame}{Métodos de Aguas Arriba}
+	\vspace*{-0.3cm}
+	\begin{itemize}
+		\item Encontrar $u\in V$ tal que $a(u,v)=L(v)$ para todo $v\in V$.
+	\end{itemize}
+	\vspace*{0.1cm}
+	$$\Big{\downarrow}$$
+	\vspace*{-0.3cm}
+	\begin{itemize}
+		\item $\text{Encontrar }u_h\in \S_h\text{ tal que }\adg{u_h}{v_h}=L_h(v_h)\text{ para todo }v_h\in \S_h$.
+	\end{itemize}
+	\vspace*{0.1cm}
+	$$\Big{\Updownarrow}$$
+	\vspace*{-0.3cm}
+	\begin{itemize}
+		\item Resolver el sistema lineal $A^{\text{DG}}\mathbf{U}^{\text{DG}}=\mathbf{F}^{\text{DG}}$ donde:
+		\vspace*{0.3cm}
+		\begin{itemize}
+			\item $A^{\text{DG}}=\left(A_{ij}^{\text{DG}}\right)_{i,j\in\left\{1,2,\ldots,N_h^{\text{upw}}\right\}}$ con $A_{ij}^{\text{DG}}=\adg{\phi_j}{\phi_i}$;
+			\item $\mathbf{U}^{\text{DG}}=\left(U_1^{\text{DG}},U_2^{\text{DG}},\ldots,U_{N_h^{\text{DG}}}^{\text{DG}}\right)^t$ con $u_h=\displaystyle\sum_{i=1}^{N_h^{\text{DG}}}U_i^{\text{DG}}\phi_i$;
+			\item $\mathbf{F}^{\text{DG}}=\left(F_1^{\text{DG}},F_2^{\text{DG}},\ldots,F_{N_h^{\text{DG}}}^{\text{DG}}\right)^t$ con $F_i^{\text{DG}}=L_h(\phi_i)$.
+		\end{itemize}
+\end{itemize}
+
+\vspace*{0.3cm}
+\footnotesize
+Donde $\adg{u_h}{v_h}=\alert{\acf{u_h}{v_h}}\text{ (\structure{flujos centrados})  o }\alert{\aupw{u_h}{v_h}}\text{ (\structure{flujos aguas arriba})}$.
+
+\end{frame}
+
+\begin{frame}{Soluciones numéricas}
+	\vspace{-0.1cm}
+	\begin{figure}[h!]
+		\begin{subfigure}[b]{0.27\textwidth}
+			\centering
+			\includegraphics[scale=0.22]{img/Conveccion_Reaccion/Recortes/steady_convect_react_exact_n_32.png}
+			\caption{Solución exacta.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.27\textwidth}
+			\centering
+			\includegraphics[scale=0.22]{img/Conveccion_Reaccion/Recortes/steady_convect_react_approx_CF_n_32.png}
+			\caption{Flujos Centrados.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.27\textwidth}
+			\centering
+			\includegraphics[scale=0.22]{img/Conveccion_Reaccion/Recortes/steady_convect_react_approx_UPW_n_32.png}
+			\caption{Aguas Arriba.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.15\textwidth}
+			\centering
+			\includegraphics[scale=0.22]{img/Conveccion_Reaccion/Recortes/steady_convect_react_values.png}
+			%\caption*{ }
+		\end{subfigure}
+		\caption{Gráficas obtenidas con $h\approx\frac{\pi}{16}$.}
+	\end{figure}
+	\vspace{-0.7cm}
+	\begin{figure}[h!]
+		\begin{subfigure}[b]{0.27\textwidth}
+			\centering
+			\includegraphics[scale=0.22]{img/Conveccion_Reaccion/Recortes/steady_convect_react_exact_n_64.png}
+			\caption{Solución exacta.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.27\textwidth}
+			\centering
+			\includegraphics[scale=0.22]{img/Conveccion_Reaccion/Recortes/steady_convect_react_approx_CF_n_64.png}
+			\caption{Flujos Centrados.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.27\textwidth}
+			\centering
+			\includegraphics[scale=0.22]{img/Conveccion_Reaccion/Recortes/steady_convect_react_approx_UPW_n_64.png}
+			\caption{Aguas Arriba.}
+		\end{subfigure}
+		\begin{subfigure}[b]{0.15\textwidth}
+			\centering
+			\includegraphics[scale=0.22]{img/Conveccion_Reaccion/Recortes/steady_convect_react_values.png}
+			%\caption*{ }
+		\end{subfigure}
+		\caption{Gráficas obtenidas con $h\approx\frac{\pi}{32}$.}
+	\end{figure}
+\end{frame}
+
+\subsection{Problema de convección-difusión evolutivo}
+
+\begin{frame}{INCLUIR VÍDEO}
+	\Huge\textbf{INCLUIR VÍDEO HIPERBÓLICO}
+\end{frame}
+
 %\section{Bibliografía básica}
 
 %\begin{frame}{Bibliografía básica}
