@@ -260,7 +260,48 @@
 
 \newcommand{\imgdir}{Undefined, use renewcommand!}
 
+
 \section{Modelización matemática mediante EDP}
+
+\begin{frame}{Modelización matemática mediante EDP}
+	\begin{center}
+		\begin{tikzpicture}[
+		% Define standard arrow tip
+		>=stealth',
+		% Define style for boxes
+		punkt/.style={
+			rectangle,
+			rounded corners,
+			scale=1.1, fill=gray!20,
+			draw=black, very thick,
+			text width=6.5em,
+			minimum height=2em,
+			text centered},
+		% Define arrow style
+		pil/.style={
+			->,
+			very thick,
+			color=black!75!blue,
+			shorten <=2pt,
+			shorten >=2pt},
+		% line width=1.2pt
+		]
+		\node[punkt] (A) at (0,0) {\color{PHDgreen}\em Observaciones de un fenómeno};
+		\node[punkt] (B) at (6,0) {\color{PHDred}\em Modelo matemático}
+		edge[pil, <-, bend left=-45] node[above] {\footnotesize
+			\begin{tabular}{l}Leyes de la naturaleza\end{tabular}} (A);
+		\node[punkt] (C) at (3,-3) {\color{orange}\em Simulación en ordenador}
+		edge[pil, ->, bend left=45]  node[left] {\footnotesize
+			\begin{tabular}{l} $\bullet$ Validación\\$\bullet$ Predicción\end{tabular}} (A)
+		edge[pil, <-, bend left=-45, inner sep=1.0ex, align=right] node[right] {\footnotesize
+			\begin{tabular}{l} $\bullet$ Análisis\\$\bullet$ Aproximación numérica \\
+			$\bullet$ Algoritmos\end{tabular}} (B);
+		% \path[line width=1.2pt, ->] (A) edge (B);
+		% \path[line width=1.2pt, ->] (B) edge (C);
+		% \path[line width=1.2pt, ->] (C) edge (A);
+		\end{tikzpicture}
+	\end{center}
+\end{frame}
 
 \subsection{Modelos del clima}
 
@@ -734,7 +775,7 @@ $$\Big{\Updownarrow}$$
 	
 \end{frame}
 
-\begin{frame}{Métodos aguas arriba}
+\begin{frame}{Métodos de flujos}
 	\vspace*{-0.3cm}
 	\begin{itemize}
 		\item Encontrar $u\in V$ tal que $a(u,v)=L(v)$ para todo $v\in V$.
